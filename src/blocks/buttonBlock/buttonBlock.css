@@ -1,0 +1,7 @@
+.buttonBlock {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px #282c34 solid;
+    margin-bottom: 40px;
+    justify-content: space-around;
+}

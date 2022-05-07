@@ -1,0 +1,13 @@
+.card {
+    max-width: 280px;
+    height: auto;
+    width: 100%;
+    border: black 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    padding: 30px 20px;
+    margin: 0 0 30px 15px;
+}

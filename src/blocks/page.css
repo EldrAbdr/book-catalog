@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+.page {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    text-rendering: optimizeLegibility;
+    color: white;
+    min-height: 100vh;
+    min-width: 320px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: auto;
+    padding: 0 80px 80px 80px;
+}

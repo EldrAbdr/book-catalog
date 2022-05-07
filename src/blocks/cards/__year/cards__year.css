@@ -1,0 +1,8 @@
+.cards__year {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+    border-bottom: 1px #7b8c62 solid;
+    padding-bottom: 10px;
+}
