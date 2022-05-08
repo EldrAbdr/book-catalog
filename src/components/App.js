@@ -4,10 +4,11 @@ import { db } from "../utils/Firebase";
 import { onSnapshot, collection } from "firebase/firestore";
 import { addNewBook, deleteBook, editBook } from "../utils/utils";
 import Main from "./Main";
-import AddBookPopup from "./AddBookPopup";
-import PopupWithCard from "./PopupWithCard";
-import EditBookPopup from "./EditBookPopup";
 import Header from "./Header";
+import Footer from "./Footer";
+import AddBookPopup from "./Popups/AddBookPopup";
+import PopupWithCard from "./Popups/PopupWithCard";
+import EditBookPopup from "./Popups/EditBookPopup";
 import "swiper/css";
 import "swiper/css/navigation";
 import Card from "./Card";
@@ -17,6 +18,7 @@ function App() {
   const [isAddPopupOpen, setAddPopupOpen] = useState(false);
   const [isRecPopupOpen, setRecPopupOpen] = useState(false);
   const [isEditPopupOpen, setEditPopupOpen] = useState(false);
+  const [isPopupCard, setIsPopupCard] = useState(false);
   const [editedBook, setEditedBook] = useState(null);
   const [recommendBook, setRecommendBook] = useState(null);
 
@@ -53,12 +55,12 @@ function App() {
   }
 
   function handleRecommend() {
-    sortByAgeRating();
-    console.log(recommendBook)
+    sortByAgeAndRating();
+    setIsPopupCard(true);
     setRecPopupOpen(true);
   }
 
-  function sortByAgeRating() {
+  function sortByAgeAndRating() {
     const yearCondition = new Date().getFullYear() - 3;
     let bestByAgeAndRating = books.filter((book) => {
       return book.year < yearCondition;
@@ -119,10 +121,14 @@ function App() {
       >
         <Card
           book={recommendBook}
-          disableButtons={true}
+          isPopupCard={isPopupCard}
         />
       </PopupWithCard>
+      <Footer>
+
+      </Footer>
     </div>
+
   );
 }
 

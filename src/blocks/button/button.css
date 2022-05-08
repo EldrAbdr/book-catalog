@@ -1,9 +1,16 @@
 .button {
     width: 180px;
-    height: 40px;
+    height: 45px;
     border: 1px #282c34 solid;
     border-radius: 5px;
     margin-bottom: 40px;
     color: black;
     margin-right: 50px;
+    transition: all .3s linear;
+}
+
+.button:hover {
+    border: white;
+    background-color: #282c34;
+    color: white;
 }

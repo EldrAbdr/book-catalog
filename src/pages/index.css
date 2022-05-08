@@ -11,6 +11,7 @@
 @import url("../blocks/cards/__year/cards__year.css");
 @import url("../blocks/cards/__container/cards__container.css");
 @import url("../blocks/card/card.css");
+@import url("../blocks/card/_mini/card_mini.css");
 @import url("../blocks/card/__text/card__text.css");
 @import url("../blocks/card/__button/card__delete-button.css");
 @import url("../blocks/card/__button/card__edit-button.css");
@@ -31,4 +32,5 @@
 @import url("../blocks/popup/_active/popup_active.css");
 @import url("../blocks/yearNavBar/yearNavBar.css");
 @import url("../blocks/yearNavBar/__year-tab/yearNavBar__tab.css");
-@import url("../blocks/yearNavBar/__year-tab/_no-date/yearNavBar__year-tab_no-date.css");
+@import url("../blocks/yearNavBar/__year-tab/_no-date/yearNavBar__tab_no-date.css");
+@import url("../blocks/footer/footer.css");

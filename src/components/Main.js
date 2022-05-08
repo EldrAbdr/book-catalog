@@ -18,10 +18,13 @@ export default function Main({ onDelete, onEditClick, books, onAddBtnClick, onRe
     setCurrentYear(year);
   }
 
-  function filterBooksByYear() {
-      return (books.filter(book => {
-          return book.year === currentYear;
-      }));
+  function filterBooksByYearAndName() {
+    let sortByYear = books.filter((book) => {
+      return book.year === currentYear;
+    });
+    return sortByYear.sort((bookX, bookY) => {
+      return bookX.name.toLowerCase().localeCompare(bookY.name.toLowerCase());
+    });
   }
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export default function Main({ onDelete, onEditClick, books, onAddBtnClick, onRe
         .reverse()
     );
 
-    setCurrentYearBooks(filterBooksByYear());
+    setCurrentYearBooks(filterBooksByYearAndName());
   }, [books, currentYear]);
 
   return (

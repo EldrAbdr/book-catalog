@@ -1,8 +1,35 @@
 .yearNavBar__tab {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.yearNavBar__tab label {
+    display: inline-block;
     width: 60px;
-    height: 35px;
+    height: 40px;
     border: 1px black solid;
     border-radius: 5px;
-    padding: 0;
+    padding: 10px 0 0 0 ;
     margin: 0 20px 0 40px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s linear;
+}
+
+.yearNavBar__tab input[type=radio]:checked + label {
+    background-color: #282c34;
+    color: white;
+}
+
+.yearNavBar__tab input[type=radio] {
+    display: none;
+}
+
+.yearNavBar__tab label:hover {
+    border: white;
+    background-color: #282c34;
+    color: white;
 }
