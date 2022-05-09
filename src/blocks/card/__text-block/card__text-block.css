@@ -6,3 +6,10 @@
     color: black;
     padding-top: 10px;
 }
+
+@media screen and (max-width: 768px){
+    .card__text-block {
+        border: none;
+        font-size: 12px;
+    }
+}

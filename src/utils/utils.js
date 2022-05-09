@@ -9,7 +9,7 @@ export function addNewBook(book) {
 
 export function deleteBook(bookId) {
   const bookRef = doc(db, "books", bookId);
-  /*deleteDoc(bookRef);*/
+   return deleteDoc(bookRef);
 }
 
 export function editBook(book) {

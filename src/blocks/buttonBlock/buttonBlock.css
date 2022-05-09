@@ -5,3 +5,10 @@
     margin-bottom: 40px;
     justify-content: space-around;
 }
+
+@media screen and (max-width: 550px) {
+    .buttonBlock {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+}

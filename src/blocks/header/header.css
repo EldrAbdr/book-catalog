@@ -5,3 +5,9 @@
     margin: 60px auto 0 auto;
     overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 300px;
+    }
+}

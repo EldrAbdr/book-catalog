@@ -1,0 +1,19 @@
+
+
+@media screen and (min-width: 768px) {
+    .sliderBreakpoints {
+        width: 500px;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    .sliderBreakpoints {
+        width: 768px;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .sliderBreakpoints {
+        width: 280px;
+    }
+}

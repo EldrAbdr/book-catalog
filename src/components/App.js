@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import AddBookPopup from "./Popups/AddBookPopup";
 import PopupWithCard from "./Popups/PopupWithCard";
 import EditBookPopup from "./Popups/EditBookPopup";
+import QuestionPopup from "./Popups/QuestionPopup";
 import "swiper/css";
 import "swiper/css/navigation";
 import Card from "./Card";
@@ -18,9 +19,11 @@ function App() {
   const [isAddPopupOpen, setAddPopupOpen] = useState(false);
   const [isRecPopupOpen, setRecPopupOpen] = useState(false);
   const [isEditPopupOpen, setEditPopupOpen] = useState(false);
+  const [isQuestionPopupOpen, setQuestionPopupOpen] = useState(false);
   const [isPopupCard, setIsPopupCard] = useState(false);
   const [editedBook, setEditedBook] = useState(null);
   const [recommendBook, setRecommendBook] = useState(null);
+  const [bookIdForDelete, setBookIdForDelete] = useState(null);
 
   useEffect(() => {
     onSnapshot(collection(db, "books"), async (snapshot) => {
@@ -33,13 +36,11 @@ function App() {
   }, []);
 
   function handleDeleteBook(bookId) {
-    deleteBook(bookId);
+    deleteBook(bookId).then(() => closePopups());
   }
 
   function handleEditBook(book) {
-    editBook(book).then(() => {
-      closePopups();
-    });
+    editBook(book).then(() => closePopups());
   }
 
   function handleEditClick(book) {
@@ -49,9 +50,7 @@ function App() {
 
   function handleAddBook(book) {
     delete book.id;
-    addNewBook(book).then(() => {
-      closePopups();
-    });
+    addNewBook(book).then(() => closePopups());
   }
 
   function handleRecommend() {
@@ -81,10 +80,16 @@ function App() {
     setAddPopupOpen(true);
   }
 
+  function handleDeleteClick(bookIdForDelete) {
+    setQuestionPopupOpen(true);
+    setBookIdForDelete(bookIdForDelete);
+  }
+
   function closePopups() {
     setAddPopupOpen(false);
     setRecPopupOpen(false);
     setEditPopupOpen(false);
+    setQuestionPopupOpen(false);
   }
 
   return (
@@ -94,7 +99,7 @@ function App() {
         books={books}
         onAddBtnClick={handleAddBtnClick}
         onRecommend={handleRecommend}
-        onDelete={handleDeleteBook}
+        onDelete={handleDeleteClick}
         onEditClick={handleEditClick}
         onEdit={handleEditBook}
       />
@@ -107,10 +112,10 @@ function App() {
         altTextButton={"Добавление..."}
       />
       <EditBookPopup
-          isOpen={isEditPopupOpen}
-          onClose={closePopups}
-          onSubmit={handleEditBook}
-          editedBook={editedBook}
+        isOpen={isEditPopupOpen}
+        onClose={closePopups}
+        onSubmit={handleEditBook}
+        editedBook={editedBook}
       />
       <PopupWithCard
         isOpen={isRecPopupOpen}
@@ -119,16 +124,16 @@ function App() {
         textButton={"ОК"}
         onSubmit={closePopups}
       >
-        <Card
-          book={recommendBook}
-          isPopupCard={isPopupCard}
-        />
+        <Card book={recommendBook} isPopupCard={isPopupCard} />
       </PopupWithCard>
-      <Footer>
-
-      </Footer>
+      <QuestionPopup
+        isOpen={isQuestionPopupOpen}
+        onClose={closePopups}
+        onSubmit={handleDeleteBook}
+        bookId={bookIdForDelete}
+      />
+      <Footer />
     </div>
-
   );
 }
 

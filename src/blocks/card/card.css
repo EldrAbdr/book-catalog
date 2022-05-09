@@ -1,5 +1,5 @@
 .card {
-    max-width: 280px;
+    max-width: 250px;
     height: auto;
     width: 100%;
     border: black 1px solid;
@@ -9,5 +9,19 @@
     box-sizing: border-box;
     position: relative;
     padding: 30px 20px;
-    margin: 0 0 30px 15px;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px){
+    .card {
+        max-width: 250px;
+        padding: 35px 10px 10px 10px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .card {
+        max-width: 200px;
+        padding: 30px 5px 5px 5px;
+    }
 }

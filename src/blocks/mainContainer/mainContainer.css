@@ -4,3 +4,9 @@
     margin: 60px auto 60px auto;
     color: black;
 }
+
+@media screen and (max-width: 768px) {
+    .mainContainer {
+        margin: 30px auto 30px auto;
+    }
+}

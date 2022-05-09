@@ -24,7 +24,8 @@
 @media screen and (max-width: 570px) {
     .form {
         max-width: 282px;
-        height: 322px;
+        max-height: 460px;
         padding: 25px 0 25px 0;
+        justify-content: flex-start;
     }
 }
