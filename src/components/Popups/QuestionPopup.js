@@ -15,6 +15,7 @@ export default function QuestionPopup({ isOpen, bookId, onClose, onSubmit }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isFormValid={true}
     />
   );
 }
