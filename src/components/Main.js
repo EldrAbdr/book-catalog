@@ -9,22 +9,31 @@ import Cards from "./Cards";
 import Card from "./Card";
 import Button from "./Button";
 
-export default function Main({ onDelete, onEditClick, books, onAddBtnClick, onRecommend }) {
-  const [yearList, setYearList] = useState([]); //массив годов присутвующих в БД. Используется в слайдере
-  const [renderBooks, setRenderBooks] = useState([]);//массив книг для отрисовки
+export default function Main({
+  onDelete,
+  onEditClick,
+  books,
+  onAddBtnClick,
+  onRecommend,
+}) {
+  const [yearList, setYearList] = useState([]); //массив всех годов присутвующих в БД. Используется в слайдере
+  const [renderBooks, setRenderBooks] = useState([]); //массив книг для отрисовки
 
   function handleTabClick(year) {
-    setRenderBooks(filterBooksByYearAndName(year))
+    //обработка нажатия на клик по году
+    setRenderBooks(filterBooksByYearAndName(year));
   }
 
-//возвращает массив - отсортированный по годам пропс books
+  //возвращает массив - пропс books отсортированный по годам
   function sortByYear() {
-      return books.sort((bookX, bookY) => {
-          return bookX.year.localeCompare(bookY.year)
-      }).reverse();
+    return books
+      .sort((bookX, bookY) => {
+        return bookX.year.localeCompare(bookY.year);
+      })
+      .reverse();
   }
 
-  //возвр. массив - фильтрует определенный год и сортирует по имени пропс books
+  //возвращает массив - фильтрует книги по переданному в аргументе году и сортирует пропс books по имени
   function filterBooksByYearAndName(year) {
     let filterByYear = books.filter((book) => {
       return book.year === year;
@@ -35,6 +44,7 @@ export default function Main({ onDelete, onEditClick, books, onAddBtnClick, onRe
   }
 
   useEffect(() => {
+    //получение Set годов из массива books
     setYearList(() =>
       Array.from(
         new Set(
@@ -47,51 +57,48 @@ export default function Main({ onDelete, onEditClick, books, onAddBtnClick, onRe
         .reverse()
     );
 
-      setRenderBooks(sortByYear)
+    setRenderBooks(sortByYear);
   }, [books]);
 
   return (
     <main className="mainContainer">
-        <div className="buttonBlock">
-            <Button onClick={onAddBtnClick} name="Добавить книгу"/>
-            <Button onClick={onRecommend} name="Порекомендовать книгу"/>
-        </div>
-        <div className={"yearNavBar"}>
-            <Swiper
-                className="sliderBreakpoints"
-                spaceBetween={5}
-                slidesPerView={3}
-                initialSlide={0}
-                navigation={true}
-                mousewheel={true}
-                modules={[Navigation, Mousewheel]}
-                breakpoints={{
-                    424: {
-                        width: 280,
-                        slidesPerView: 4,
-                    },
-                    768: {
-                        width: 500,
-                        slidesPerView: 5,
-                    },
-                    1023: {
-                        width: 768,
-                        slidesPerView: 7,
-                    },
-                }}
-            >
-                {yearList.map((year) => {
-                    return (
-                        <SwiperSlide key={year}>
-                            <YearButton
-                                year={year}
-                                onClick={handleTabClick}
-                            />
-                        </SwiperSlide>
-                    );
-                })}
-            </Swiper>
-        </div>
+      <div className="buttonBlock">
+        <Button onClick={onAddBtnClick} name="Добавить книгу" />
+        <Button onClick={onRecommend} name="Порекомендовать книгу" />
+      </div>
+      <div className={"yearNavBar"}>
+        <Swiper
+          className="sliderBreakpoints"
+          spaceBetween={5}
+          slidesPerView={3}
+          initialSlide={0}
+          navigation={true}
+          mousewheel={true}
+          modules={[Navigation, Mousewheel]}
+          breakpoints={{
+            424: {
+              width: 280,
+              slidesPerView: 4,
+            },
+            768: {
+              width: 500,
+              slidesPerView: 5,
+            },
+            1023: {
+              width: 768,
+              slidesPerView: 7,
+            },
+          }}
+        >
+          {yearList.map((year) => {
+            return (
+              <SwiperSlide key={year}>
+                <YearButton year={year} onClick={handleTabClick} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
       <Cards>
         {renderBooks.map((book) => {
           return (

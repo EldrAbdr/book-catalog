@@ -36,11 +36,21 @@ function App() {
   }, []);
 
   function handleDeleteBook(bookId) {
-    deleteBook(bookId).then(() => closePopups());
+    deleteBook(bookId)
+      .then(() => closePopups())
+      .catch((err) => {
+        console.log(err);
+        closePopups();
+      });
   }
 
   function handleEditBook(book) {
-    editBook(book).then(() => closePopups());
+    editBook(book)
+      .then(() => closePopups())
+      .catch((err) => {
+        console.log(err);
+        closePopups();
+      });
   }
 
   function handleEditClick(book) {
@@ -50,7 +60,12 @@ function App() {
 
   function handleAddBook(book) {
     delete book.id;
-    addNewBook(book).then(() => closePopups());
+    addNewBook(book)
+      .then(() => closePopups())
+      .catch((err) => {
+        console.log(err);
+        closePopups();
+      });
   }
 
   function handleRecommend() {

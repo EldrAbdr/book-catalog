@@ -1,4 +1,4 @@
-export default function Cards({ children, isCardActive }) {
+export default function Cards({ children }) {
   return (
     <section className="cards">
       <ul className="cards__container">{children}</ul>

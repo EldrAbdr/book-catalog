@@ -7,21 +7,20 @@ export default function PopupWithCard({
   isOpen,
   children,
 }) {
-
   return (
     <div className={`${name}-popup popup ${isOpen && "popup_active"}`}>
       <div className="form">
         <button
-            type="button"
-            className="form__edit-close-button close-button hover-transparent"
-            onClick={onClose}
+          type="button"
+          className="form__edit-close-button close-button hover-transparent"
+          onClick={onClose}
         />
         <h2 className="form__title">{title}</h2>
         {children}
         <button
-            type="button"
-            className="form__submit-button"
-            onClick={onSubmit}
+          type="button"
+          className="form__submit-button"
+          onClick={onSubmit}
         >
           {textButton}
         </button>

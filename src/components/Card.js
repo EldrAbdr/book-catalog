@@ -10,7 +10,7 @@ export default function Card({ book, onDelete, onEditClick, isPopupCard }) {
   }
 
   return (
-    <li className={`card ${isPopupCard? "card_mini": ""}`}>
+    <li className={`card ${isPopupCard ? "card_mini" : ""}`}>
       <button
         className={`card__button card__button_edit${
           isPopupCard ? "card__button_hidden" : ""
