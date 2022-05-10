@@ -43,7 +43,7 @@ export default function PopupWithForm({
         <button
           type="submit"
           className="form__submit-button"
-          disabled={isFormValid}
+          disabled={!isFormValid}
         >
           {isSubmitClick ? altTextButton : textButton}
         </button>
